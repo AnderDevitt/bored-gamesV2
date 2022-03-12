@@ -6,8 +6,14 @@ Rails.application.routes.draw do
   root to: "pages#index"
 
   get '/addresses', to: 'addresses#index'
-  get '/addresses/new', to: 'addresses#new'
-  get '/addresses/:id', to: 'addresses#show', as: "address"
   post '/addresses', to: 'addresses#create'
+  get '/addresses/new', to: 'addresses#new'
+  get '/addresses/:id', to: 'addresses#show', as: "show_address"
+  get '/addresses/:id/edit', to: 'addresses#edit', as: "edit_address"
+  patch '/addresses/:id', to: 'addresses#update'
+  put '/addresses/:id', to: 'addresses#update'
+  delete '/addresses/:id', to: 'addresses#destroy'
+
 
 end
+
