@@ -11,9 +11,13 @@
                 <% if user_signed_in? %>
                     
                 <li class="nav-item">
-                    <%= link_to 'My details', @address, class: "nav-link active" %>
+                    <%= link_to "My details", addresses_path, class: "nav-link active" %>
                 </li>
-
+                
+                <li class="nav-item">
+                    <%= link_to "Sell my game", new_game_path, class: "nav-link active" %>
+                </li>
+                
                 <li class="nav-item">
                     <%= link_to "Logout", destroy_user_session_path, method: 'delete', class: "nav-link active"  %>
                 </li>

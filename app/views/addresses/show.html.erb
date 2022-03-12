@@ -4,7 +4,7 @@
 <p>Postcode: <%= @address.postcode %></p>
 <p>State: <%= @address.state %></p>
 
-<% if user_signed_in? and (current_user.admin? or current_user.id == @game.user_id) %> 
+<% if user_signed_in? and (current_user.admin? or current_user.id == @address.user_id) %> 
     <%= link_to 'Edit', edit_address_path %>
     <%= link_to 'Destroy', @address, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

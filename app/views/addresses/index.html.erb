@@ -26,4 +26,11 @@
       <%= address.postcode %>
     </p>
   
+    <% if user_signed_in? and (current_user.admin? or current_user.id == address.user_id) %> 
+      
+      <%= link_to 'Destroy', @address, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <%= link_to 'Back', pages_index_path %>
+
+
   <% end %>
