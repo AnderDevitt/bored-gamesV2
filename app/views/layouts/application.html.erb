@@ -11,6 +11,16 @@
   </head>
 
   <body>
+
+  <p></p>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <%= render 'shared/navbar' %>
     <%= yield %>
   </body>
 </html>
