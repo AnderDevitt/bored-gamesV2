@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   get "pages/index"
   root to: "pages#index"
 
+  get '/addresses', to: 'addresses#index'
+  get '/addresses/new', to: 'addresses#new'
+  get '/addresses/:id', to: 'addresses#show', as: "address"
+  post '/addresses', to: 'addresses#create'
+
 end
