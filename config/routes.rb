@@ -19,15 +19,17 @@ Rails.application.routes.draw do
   put 'addresses/:id', to: 'addresses#update'
   
 
-  get 'games', to: 'games#index'
-  post 'games', to: 'games#create'
-  get 'games/new', to: 'games#new', as: "new_game"
-  get 'games/:id/edit', to: 'games#edit', as: 'edit_game'
-  get 'games/:id', to: 'games#show', as: 'game'
-  patch 'games/:id', to: 'games#update'
-  put 'games/:id', to: 'games#update'
-  delete 'games/:id', to: 'games#destroy'
-
+  # get 'games', to: 'games#index'
+  # post 'games', to: 'games#create'
+  # get 'games/new', to: 'games#new', as: "new_game"
+  # get 'games/:id/edit', to: 'games#edit', as: 'edit_game'
+  # get 'games/:id', to: 'games#show', as: 'game'
+  # patch 'games/:id', to: 'games#update'
+  # put 'games/:id', to: 'games#update'
+  # delete 'games/:id', to: 'games#destroy'
+  resources :games do
+    resources :purchases, only:[:new, :create]
+  end
 
 end
 

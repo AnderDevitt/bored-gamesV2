@@ -1,5 +1,11 @@
 class Game < ApplicationRecord
   belongs_to :user
+  has_many :users
+  has_one :purchase
+  # has_one :user, through: :purchases
+  
+  
+  
   # for adding a picture
   has_one_attached :gamepic
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_12_083911) do
+ActiveRecord::Schema.define(version: 2022_03_14_051733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 2022_03_12_083911) do
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.float "price"
+    t.boolean "deliver", default: false
+    t.bigint "game_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_purchases_on_game_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -86,4 +97,6 @@ ActiveRecord::Schema.define(version: 2022_03_12_083911) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "games", "users"
+  add_foreign_key "purchases", "games"
+  add_foreign_key "purchases", "users"
 end

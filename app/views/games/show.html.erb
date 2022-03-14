@@ -6,6 +6,12 @@
 </p>
 
 <p>
+  <strong>Price:</strong>
+  <%= @game.price %>
+</p>
+
+<%= link_to "Buy it now", new_game_purchase_path(@game.id) %>
+<p>
   <strong>Condition:</strong>
   <%= @game.condition %>
 </p>
@@ -20,10 +26,7 @@
   <%= @game.maximum_players %>
 </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @game.price %>
-</p>
+
 
 <p>
   <strong>Description:</strong>
