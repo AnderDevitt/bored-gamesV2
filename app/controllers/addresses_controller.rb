@@ -10,6 +10,7 @@ class AddressesController < ApplicationController
 
     # GET /addresses/1
     def show
+        @address = Address.find(params[:id])
     end
 
     # GET /addresses/new
