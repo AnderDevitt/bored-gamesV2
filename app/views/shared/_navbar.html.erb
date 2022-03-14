@@ -10,17 +10,24 @@
                 
                 <% if user_signed_in? %>
                     
-                <li class="nav-item">
-                    <%= link_to "My details", addresses_path, class: "nav-link active" %>
-                </li>
+               
                 
                 <li class="nav-item">
                     <%= link_to "Sell my game", new_game_path, class: "nav-link active" %>
                 </li>
-                
-                <li class="nav-item">
-                    <%= link_to "Logout", destroy_user_session_path, method: 'delete', class: "nav-link active"  %>
-                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <%=current_user.username %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><%= link_to "My details", current_user.address, class: "dropdown-item" %></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><%= link_to "Logout", destroy_user_session_path, method: 'delete', class: "dropdown-item"  %></li>
+                    </ul>
+                    </li>
+
 
                 
                 <% else %>
