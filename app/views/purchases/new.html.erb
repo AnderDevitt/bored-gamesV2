@@ -1,21 +1,22 @@
-<main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light"><%= @game.name %></h1>
-        <p class="lead text-muted"><strong>Price:</strong><%= @game.price %></p>
-        <p class="lead text-muted">Click below to make the purchase, or to cancel.</p>
-       
-       
-        <p>
-          
-          <%= link_to "BUY", game_purchases_path(@game.id), method: :post %>
-          
-          
-          <a href="<%= game_path(@game.id) %>" class="btn btn-secondary my-2">Cancel</a>
+<p>Are you sure you want to buy <%=@game.name%>?</p>
 
-        </p>
-      </div>
-    </div>
-  </section>
-</main>
+<%= form_tag game_purchases_path do %>
+    <article>
+        <% if flash[:error].present? %>
+            <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+            </div>
+        <% end %>
+
+        <label class="amount">
+            <span>Amount: $<%= @game.price %></span>
+        </label>
+    </article>
+    
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-description="Payment for game"
+        data-amount="<%=(@game.price*100).to_i%>"
+        data-locale="auto">
+    </script>
+<% end %>

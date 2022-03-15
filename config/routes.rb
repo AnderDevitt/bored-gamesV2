@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   patch 'addresses/:id', to: 'addresses#update'
   put 'addresses/:id', to: 'addresses#update'
   
-
+  get '/mypurchases', to: 'purchases#index', as: "my_purchases"
   # get 'games', to: 'games#index'
   # post 'games', to: 'games#create'
   # get 'games/new', to: 'games#new', as: "new_game"

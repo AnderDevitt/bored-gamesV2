@@ -22,7 +22,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><%= link_to "My details", current_user.address, class: "dropdown-item" %></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><%= link_to "Purchase history", my_purchases_path, class: "dropdown-item" %></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><%= link_to "Logout", destroy_user_session_path, method: 'delete', class: "dropdown-item"  %></li>
                     </ul>
