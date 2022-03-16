@@ -6,8 +6,9 @@ class Game < ApplicationRecord
   
   
   
+  
   # for adding a picture
-  has_one_attached :gamepic
+  has_one_attached :picture
 
   # conditions some damage, incomplete, good, well looked after, brand new
   # {"some damage" => 1, "incomplete" => 2, "good" => 3, "well looked after" => 4, "brand new" => 5}

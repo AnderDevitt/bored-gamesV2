@@ -5,6 +5,8 @@
   <%= @game.name %>
 </p>
 
+<%= image_tag @game.picture if @game.picture.attached? %>
+
 <p>
   <strong>Price:</strong>
   <%= @game.price %>
