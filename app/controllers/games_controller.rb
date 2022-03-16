@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-    before_action :set_game, only: %i[ show edit update destroy ]
+    before_action :find_game, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :check_ownership, only: [:edit, :update, :destroy]
 
@@ -10,7 +10,7 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
-    @game = Game.find(params[:id])
+    # @game = Game.find(params[:id])
   end
 
   # GET /games/new
@@ -60,8 +60,13 @@ class GamesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_game
-      @game = Game.find(params[:id])
+    def find_game
+      begin
+        @game = Game.find(params[:id])
+      rescue StandardError => e
+        puts e.message
+        redirect_to games_path, alert: "This game id #{params[:id]} doesn't exist in the database"
+      end
     end
 
     # Only allow a list of trusted parameters through.

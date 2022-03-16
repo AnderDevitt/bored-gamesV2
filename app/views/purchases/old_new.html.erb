@@ -10,7 +10,7 @@
         <p>
           
           <%= link_to "BUY", game_purchases_path(@game.id), method: :post %>
-          
+          <%= link_to "BUY", game_purchases_path(@game.id), method: :post , class: "btn btn-secondary my-2"%>
           
           <a href="<%= game_path(@game.id) %>" class="btn btn-secondary my-2">Cancel</a>
 

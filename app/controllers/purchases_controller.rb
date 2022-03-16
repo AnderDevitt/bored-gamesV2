@@ -11,6 +11,7 @@ class PurchasesController < ApplicationController
     end
 
     def create
+        
         @amount = (@game.price*100).to_i
         customer = Stripe::Customer.create(
             email: params[:stripeEmail],
@@ -23,14 +24,15 @@ class PurchasesController < ApplicationController
             description: "#{@game.name} payment",
             currency: 'aud'
         )
-
+        begin
         @purchase = Purchase.create(game: @game, user: current_user, price: @game.price)
-        redirect_to game_path(@game.id)
+        # redirect_to game_path(@game.id)
 
         rescue Stripe::CardError => e
-            flash[:error] = e.message
-
-        redirect_to game_path(@game.id)
+            puts e.message
+            # redirect_to_games_path(@game.id), alert: "Payment failed" 
+        end
+        # redirect_to game_path(@game.id)
     end
 
     def find_game
