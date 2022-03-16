@@ -11,27 +11,25 @@
   </head>
 
   <body>
+    <header>
+      
+    </header>
+    <div class="container">
+      <%= image_tag "games-long.png", alt: "games heading image" %>
+        
+      <% # This condition displays notices at the top of the screen %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
-  <p></p>
-    <% # This condition will display flash errors at the top of the page if they exist %>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    
-    <% # This condition displays notices at the top of the screen %>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+      <% # Add the navbar to the top of all pages %>
+      <%= render partial: 'shared/navbar' %>
 
-    <% # Add the navbar to the top of all pages %>
-    <%= render partial: 'shared/navbar' %>
-
-    <% # Add all other content from views %>
-    <%= yield %>
+      <% # Add all other content from views %>
+      <%= yield %>
+    </div>
   </body>
 </html>
