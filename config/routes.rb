@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # put 'games/:id', to: 'games#update'
   # delete 'games/:id', to: 'games#destroy'
   resources :games do
-    resources :purchases, only:[:new, :create]
+    resources :purchases, only:[:new, :create, :index]
   end
 
 end

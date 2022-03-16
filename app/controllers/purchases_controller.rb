@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-    before_action :find_purchase
+    before_action :find_game
     before_action :authenticate_user!
 
     def index
@@ -33,8 +33,8 @@ class PurchasesController < ApplicationController
         redirect_to game_path(@game.id)
     end
 
-    def find_purchase
-        @purchase = Purchase.find(params[:game_id])
+    def find_game
+        @game = Game.find(params[:game_id])
     end
 
 end
