@@ -27,7 +27,7 @@ class GamesController < ApplicationController
     # @game = Game.new(game_params, user_id: current_user.user_id)
     # @game = Game.new(name: game_params[:name], condition: game_params[:condition], minimum_players: game_params[:minimum_players], maximum_players: game_params[:maximum_players], price: game_params[:price], description: game_params[:description], genre: game_params[:genre], picture: game_params[:picture], user: current_user)
     begin
-      game = Game.create(game_params)
+      game = current_user.games.create(game_params)
       redirect_to games_path, notice: "#{game.name} was created successfully"
     rescue StandardError => e
       puts e.message

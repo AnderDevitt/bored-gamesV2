@@ -4,9 +4,6 @@ class Game < ApplicationRecord
   has_one :purchase
   # has_one :user, through: :purchases
   
-  
-  
-  
   # for adding a picture
   has_one_attached :picture
 

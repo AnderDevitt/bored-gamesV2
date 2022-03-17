@@ -7,9 +7,9 @@
     <%= game.name %>
   </h3>
 
-
-  <%= image_tag @game.picture if @game.picture.attached? %>
-
+  <% if game.picture.attached? %>
+    <%= image_tag game.picture %>
+  <% end %>
   <p>
     <strong>Genre:</strong>
     <%= game.genre %>
