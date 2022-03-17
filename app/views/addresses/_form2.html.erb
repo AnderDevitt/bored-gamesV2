@@ -1,0 +1,30 @@
+<%= form_with model: @address do |form| %>
+    <div class="field">
+        <%= form.label :street_number %>
+        <%= form.number_field :street_number, required:true %>
+    </div>
+
+    <div class="field">
+        <%= form.label :street_name %>
+        <%= form.text_field :street_name, required:true %>
+    </div>
+
+    <div class="field">
+        <%= form.label :suburb %>
+        <%= form.text_field :suburb, required:true %>
+    </div>
+
+    <div class="field">
+        <%= form.label :state %>
+        <%= form.text_field :state, required:true %>
+    </div>
+
+    <div class="field">
+        <%= form.label :postcode %>
+        <%= form.text_field :postcode, required:true %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>

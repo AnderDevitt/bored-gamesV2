@@ -11,16 +11,25 @@
   </head>
 
   <body>
+    <header>
+      
+    </header>
+    <div class="container">
+      <%= image_tag "games-long.png", alt: "games heading image" %>
+        
+      <% # This condition displays notices at the top of the screen %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
-  <p></p>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+      <% # Add the navbar to the top of all pages %>
+      <%= render partial: 'shared/navbar' %>
 
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+      <% # Add all other content from views %>
+      <%= yield %>
+    </div>
   </body>
 </html>
