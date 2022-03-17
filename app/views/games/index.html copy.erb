@@ -1,0 +1,35 @@
+
+<h1>Games</h1>
+
+<% @games.each do |game| %>
+    
+  <h3>
+    <%= game.name %>
+  </h3>
+
+  <% if game.picture.attached? %>
+    <%= image_tag game.picture %>
+  <% end %>
+  <p>
+    <strong>Genre:</strong>
+    <%= game.genre %>
+  </p>
+
+  <p>
+    <strong>Players:</strong>
+    <%= game.minimum_players %> to <%= game.maximum_players %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    $<%= game.price %>
+  </p>
+
+
+  
+  <p><%= link_to 'Show', game %></p>
+
+<% end %>
+
+
+
