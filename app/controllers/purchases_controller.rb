@@ -1,10 +1,14 @@
 class PurchasesController < ApplicationController
-    before_action :find_game
-    before_action :authenticate_user!
+    
+    before_action :find_purchase, only: %i[show edit update destroy ]
+    before_action :find_game, only: [:new, :create ]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :check_ownership, only: [:edit, :update, :destroy]
 
     def index
-        @purchase = current_user.purchases
+        @purchases = current_user.purchases
     end
+
 
     def new
         @purchase = Purchase.new
@@ -35,8 +39,19 @@ class PurchasesController < ApplicationController
         # redirect_to game_path(@game.id)
     end
 
+    private
+
     def find_game
         @game = Game.find(params[:game_id])
     end
 
+    def find_purchase
+        @purchase = Purchase.find(params[:purchase_id])
+    end
+
+    def check_ownership
+        if !(current_user.admin? or current_user.id == @purchase.user_id)
+          redirect_to games_url, alert: "You have to be the seller of a game or an admin to do this."
+        end
+      end
 end

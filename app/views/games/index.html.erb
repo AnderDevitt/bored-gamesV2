@@ -8,7 +8,7 @@
         <div class="card" style="width: 18rem;">
           <div class="card-img-top" alt="Game main image">
             <% if game.picture.attached? %>
-              <%= image_tag game.picture %>
+              <%= image_tag game.picture, class: "img-thumbnail" %>
             <% end %>
           </div>
           <div class="card-body">

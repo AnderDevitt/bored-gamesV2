@@ -7,6 +7,7 @@
     <h2>User</h2>
     <p><strong>Username:</strong> <%= current_user.username %></p>
     <p><strong>Email:</strong> <%= current_user.email %></p>
+    <%= link_to 'Edit', edit_user_registration_path %>
     <h2>Address</h2>
     <p>Street: <%= @address.street_number %> <%= @address.street_name %></p>
     <p>Suburb: <%= @address.suburb %></p>

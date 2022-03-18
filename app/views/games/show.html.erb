@@ -1,49 +1,61 @@
 
+<div class="card mb-3" style="max-width: 100%;">
+<div class="row g-0">
+  <div class="col-md-4">
+    <div class="img-fluid rounded-start" alt="Boardgame image">
+      <% if @game.picture.attached? %>
+        <%= image_tag @game.picture.representation(resize_to_limit: [400,400]).processed, :crop => :fill %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card-body">
+      <h5 class="card-title"><%= @game.name %></h5>
+      <p>
+        <strong>Price:</strong>
+        <%= @game.price %>
+      </p>
+      <p>
+        <strong>Seller:</strong>
+        <%= @game.user.username %>
+      </p>
+      <p class="card-text"><%= @game.description %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
+      <p>
+        <strong>Condition:</strong>
+        <%= @game.condition %>
+      </p>
+      <p>
+        <strong>Players:</strong>
+        <%= @game.minimum_players %> to <%= @game.maximum_players %>
+      </p>
+      <p>
+        <strong>Condition:</strong>
+        <%= @game.condition %>
+      </p>
+      <%= link_to "Buy it now", new_game_purchase_path(@game.id) %>
+      <% if user_signed_in? and (current_user.admin? or current_user.id == @game.user_id) %> 
+          <%= link_to 'Edit', edit_game_path %>
+          <%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <%= link_to 'Back', games_path %>
 
-<% if @game.picture.attached? %>
-  <%= image_tag @game.picture %>
-<% end %>
-
-<p>
-  <strong>Price:</strong>
-  <%= @game.price %>
-</p>
-
-<%= link_to "Buy it now", new_game_purchase_path(@game.id) %>
-<p>
-  <strong>Condition:</strong>
-  <%= @game.condition %>
-</p>
-
-<p>
-  <strong>Min player:</strong>
-  <%= @game.minimum_players %>
-</p>
-
-<p>
-  <strong>Max player:</strong>
-  <%= @game.maximum_players %>
-</p>
+      
+    </div>
+  </div>
+</div>
+</div>
 
 
 
-<p>
-  <strong>Description:</strong>
-  <%= @game.description %>
-</p>
 
-<p>
-  <strong>Seller:</strong>
-  <%= @game.user.username %>
-</p>
 
-<% if user_signed_in? and (current_user.admin? or current_user.id == @game.user_id) %> 
-    <%= link_to 'Edit', edit_game_path %>
-    <%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-<%= link_to 'Back', games_path %>
+
+
+
+
+
+
+
+
+
