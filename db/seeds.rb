@@ -1,9 +1,11 @@
 
+
+puts 'Seeding database'
 # Create sample users for DB
-u1 = User.create("email"=>"andy@test.com", "username"=>"andy", "admin"=>false)
-u2 = User.create("email"=>"saori@test.com", "username"=>"saori", "admin"=>false)
-u3 = User.create("email"=>"bob@test.com", "username"=>"bob", "admin"=>false)
-u4 = User.create("email"=>"jay@test.com", "username"=>"jay", "admin"=>false)
+u1 = User.create("email"=>"andy@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"andy", "admin"=>false)
+u2 = User.create("email"=>"saori@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"saori", "admin"=>false)
+u3 = User.create("email"=>"bob@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"bob", "admin"=>false)
+u4 = User.create("email"=>"jay@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"jay", "admin"=>false)
 
 # Create sample addresses for DB
 a1 = Address.create("street_number"=>1, "street_name"=>"West Street", "suburb"=>"Indooroopilly", "state"=>"QLD", "postcode"=>"4068", "user_id"=>2)
@@ -41,3 +43,5 @@ g8.picture.attach(io: File.open(Rails.root.join('app/assets/images/ashardalon.jp
 Purchase.create("price"=>50.0, "deliver"=>false, "game_id"=>1, "user_id"=>4)
 Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>3, "user_id"=>2)
 Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>6, "user_id"=>2)
+
+puts 'Database is ready'
