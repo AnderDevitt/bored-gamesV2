@@ -33,6 +33,13 @@
         <strong>Condition:</strong>
         <%= @game.condition %>
       </p>
+
+      <p>
+        <strong>Location:</strong>
+        <%= @game.user.address.street_name %>, <%= @game.user.address.suburb %>, <%= @game.user.address.postcode %>
+      </p>
+
+
       <% # Stop the user from being able to buy their own game %>
       <% if user_signed_in? and (current_user.id != @game.user_id) %>
         <%= link_to "Buy it now", new_game_purchase_path(@game.id), class: "btn btn-primary my-2" %>
