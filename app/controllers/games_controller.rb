@@ -8,6 +8,15 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  def search
+    if params[:search].blank?
+      redirect_to_games_path and return
+    else
+      @parameter = params[:search].downcase
+      @results = Game.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    end
+  end
+
   # GET /games/1
   def show
     # @game = Game.find(params[:id])
@@ -77,7 +86,7 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name, :condition, :minimum_players, :maximum_players, :price, :description, :genre, :picture)
+      params.require(:game).permit(:name, :condition, :minimum_players, :maximum_players, :price, :description, :genre, :picture, :search)
     end
 
     def check_ownership

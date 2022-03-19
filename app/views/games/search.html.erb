@@ -1,34 +1,34 @@
+<h3>Search Results</h3>
 
-<h1>Games</h1>
 
 
+
+<%= link_to 'Back', games_path %><br>
+<br><br>
 <div class="row row-cols-1 row-cols-md-4 g-4">
-  <% @games.each do |game| %>
+  <% @results.each do |result| %>
     <div class="col">
       
         <div class="card" style="width: 18rem;">
           <div class="card-img-top" alt="Game main image">
-            <% if game.picture.attached? %>
-              <%= image_tag game.picture, class: "img-thumbnail" %>
+            <% if result.picture.attached? %>
+              <%= image_tag result.picture, class: "img-thumbnail" %>
             <% end %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= game.name %></h5>
+            <h5 class="card-title"><%= result.name %></h5>
             <p class="card-text">
               <strong>Genre:</strong>
-              <%= game.genre %>
+              <%= result.genre %>
             </p>
             <p class="card-text">
               <strong>Price:</strong>
-              $<%= game.price %>
+              $<%= result.price %>
             </p>
-            <p><%= link_to 'Show', game %></p>
+            <p><%= link_to 'Show', result %></p>
           </div>
           
       </div>
     </div>  
   <% end %>
 </div>
-
-
-
