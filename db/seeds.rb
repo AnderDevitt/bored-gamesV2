@@ -15,30 +15,35 @@ a4 = Address.create("street_number"=>4, "street_name"=>"2345", "suburb"=>"cbd", 
 
 
 # Create sample games for DB
-g1 = Game.create("name"=>"Catan", "genre"=>"family", "minimum_players"=>2, "maximum_players"=>6, "price"=>14.5, "description"=>"Best game for indroducing new players to your gaming group!", "user_id"=>2, "condition"=>nil)
+g1 = Game.create("name"=>"Catan", "genre"=>"family", "minimum_players"=>2, "maximum_players"=>6, "price"=>14.5, "description"=>"Best game for indroducing new players to your gaming group!", "user_id"=>2, "condition"=>2)
 g1.picture.attach(io: File.open(Rails.root.join('app/assets/images/catan.jpg')), filename: 'catan.jpg')
 
-g2 = Game.create("name"=>"Scythe", "genre"=>"worker_placement", "minimum_players"=>1, "maximum_players"=>5, "price"=>32.0, "description"=>"Challenging game in a steam-punk like world of robot war.", "user_id"=>3, "condition"=>nil)
+g2 = Game.create("name"=>"Scythe", "genre"=>"worker_placement", "minimum_players"=>1, "maximum_players"=>5, "price"=>32.0, "description"=>"Challenging game in a steam-punk like world of robot war.", "user_id"=>3, "condition"=>1)
 g2.picture.attach(io: File.open(Rails.root.join('app/assets/images/scythe.jpeg')), filename: 'scythe.jpeg')
 
-g3 = Game.create("name"=>"Zombicide", "genre"=>"science_fiction", "minimum_players"=>2, "maximum_players"=>6, "price"=>23.5, "description"=>"Zombies!! What else do you want?\r\n\r\nCan you survive the zombie apocalypse?!", "user_id"=>3, "condition"=>nil)
+g3 = Game.create("name"=>"Zombicide", "genre"=>"science_fiction", "minimum_players"=>2, "maximum_players"=>6, "price"=>23.5, "description"=>"Zombies!! What else do you want?\r\n\r\nCan you survive the zombie apocalypse?!", "user_id"=>3, "condition"=>3)
 g3.picture.attach(io: File.open(Rails.root.join('app/assets/images/zombicide.jpeg')), filename: 'zombicide.jpeg')
 
-g4 =  Game.create("name"=>"Rebellion", "genre"=>"strategy", "minimum_players"=>2, "maximum_players"=>4, "price"=>120.0, "description"=>"Missing some cards.\r\n\r\nGreat game set in the Star Wars universe.", "user_id"=>4, "condition"=>nil)
+g4 =  Game.create("name"=>"Rebellion", "genre"=>"strategy", "minimum_players"=>2, "maximum_players"=>4, "price"=>120.0, "description"=>"Missing some cards.\r\n\r\nGreat game set in the Star Wars universe.", "user_id"=>4, "condition"=>1)
 g4.picture.attach(io: File.open(Rails.root.join('app/assets/images/rebellion.jpg')), filename: 'rebellion.jpg')
 
-g5 = Game.create("name"=>"Castle Ravenloft", "genre"=>"fantasy", "minimum_players"=>1, "maximum_players"=>4, "price"=>32.0, "description"=>"Fun co-op D&D game. \r\n\r\nSome damage to the box, and my cat chewed the elf wizard mini.", "user_id"=>4, "condition"=>nil)
+g5 = Game.create("name"=>"Castle Ravenloft", "genre"=>"fantasy", "minimum_players"=>1, "maximum_players"=>4, "price"=>32.0, "description"=>"Fun co-op D&D game. \r\n\r\nSome damage to the box, and my cat chewed the elf wizard mini.", "user_id"=>4, "condition"=>1)
 g5.picture.attach(io: File.open(Rails.root.join('app/assets/images/ravenloft.jpeg')), filename: 'ravenloft.jpeg')
 
-g6 = Game.create("name"=>"Catan", "genre"=>"family", "minimum_players"=>2, "maximum_players"=>6, "price"=>32.0, "description"=>"Welcome new gamers to your group", "user_id"=>2, "condition"=>nil)
-g6.picture.attach(io: File.open(Rails.root.join('app/assets/images/catan.jpg')), filename: 'catan.jpg')
+g6 = Game.create("name"=>"Tokaido", "genre"=>"family", "minimum_players"=>2, "maximum_players"=>5, "price"=>70.0, "description"=>"Become a traveller on the Tokaido road in medieval Japan", "user_id"=>2, "condition"=>4)
+g6.picture.attach(io: File.open(Rails.root.join('app/assets/images/tokaido.jpg')), filename: 'tokaido.jpg')
 
-g7 = Game.create("name"=>"Catan", "genre"=>"family", "minimum_players"=>2, "maximum_players"=>6, "price"=>32.0, "description"=>"Classic game", "user_id"=>2, "condition"=>nil)
+g7 = Game.create("name"=>"Catan", "genre"=>"family", "minimum_players"=>2, "maximum_players"=>6, "price"=>32.0, "description"=>"Classic game", "user_id"=>2, "condition"=>4)
 g7.picture.attach(io: File.open(Rails.root.join('app/assets/images/catan.jpg')), filename: 'catan.jpg')
 
-g8 = Game.create("name"=>"Wrath of Ashardalon", "genre"=>"fantasy", "minimum_players"=>1, "maximum_players"=>4, "price"=>50.0, "description"=>"A great co-op Dungeons and Dragons game.", "user_id"=>2, "condition"=>nil)
+g8 = Game.create("name"=>"Wrath of Ashardalon", "genre"=>"fantasy", "minimum_players"=>1, "maximum_players"=>4, "price"=>50.0, "description"=>"A great co-op Dungeons and Dragons game.", "user_id"=>2, "condition"=>3)
 g8.picture.attach(io: File.open(Rails.root.join('app/assets/images/ashardalon.jpeg')), filename: 'ashardalon.jpeg')
 
+g8 = Game.create("name"=>"Descent", "genre"=>"fantasy", "minimum_players"=>2, "maximum_players"=>5, "price"=>120.0, "description"=>"So many minis!.", "user_id"=>1, "condition"=>3)
+g8.picture.attach(io: File.open(Rails.root.join('app/assets/images/descent.jpg')), filename: 'descent.jpg')
+
+g8 = Game.create("name"=>"Star Wars Outer Rim", "genre"=>"science_fiction", "minimum_players"=>2, "maximum_players"=>4, "price"=>50.0, "description"=>"Fun expansion for Star Wars Rebellion.", "user_id"=>2, "condition"=>3)
+g8.picture.attach(io: File.open(Rails.root.join('app/assets/images/outer_rim.jpg')), filename: 'outer_rim.jpg')
 # Create sample purchases for DB
 Purchase.create("price"=>50.0, "deliver"=>false, "game_id"=>1, "user_id"=>4)
 Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>3, "user_id"=>2)

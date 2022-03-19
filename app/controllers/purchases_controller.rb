@@ -29,7 +29,7 @@ class PurchasesController < ApplicationController
             currency: 'aud'
         )
         begin
-        @purchase = Purchase.create(game: @game, user: current_user, price: @game.price)
+        @purchase = Purchase.create(game: @game, user: current_user, price: @game.price, receipt_url: charge.receipt_url)
         # redirect_to game_path(@game.id)
 
         rescue Stripe::CardError => e

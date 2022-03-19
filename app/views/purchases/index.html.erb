@@ -3,6 +3,8 @@
 <% @purchases.each do |p| %>
     <h3><%=p.game.name%></h3>
     <p>$<%=p.price%></p>
-    <% # link_to "See receipt", "#{p.receipt_url}", target: :_blank %>
+    <p>Purchased on: <%=p.created_at%></p>
+    <%= link_to "See receipt", "#{p.receipt_url}", target: :_blank, class: "btn btn-primary my-2" %>
+    
     <br>
 <% end %>
