@@ -7,13 +7,14 @@
     <h2>User</h2>
     <p><strong>Username:</strong> <%= current_user.username %></p>
     <p><strong>Email:</strong> <%= current_user.email %></p>
-    <%= link_to 'Edit', edit_user_registration_path %>
+    <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-secondary my-2" %>
     <h2>Address</h2>
     <p>Street: <%= @address.street_number %> <%= @address.street_name %></p>
     <p>Suburb: <%= @address.suburb %></p>
     <p>Postcode: <%= @address.postcode %></p>
     <p>State: <%= @address.state %></p>
 
-    <%= link_to 'Edit', edit_address_path %>
+    <%= link_to 'Edit', edit_address_path, class: "btn btn-secondary my-2" %> 
 <% end %>
+<br><br>
 <%= link_to 'Back', pages_index_path %>

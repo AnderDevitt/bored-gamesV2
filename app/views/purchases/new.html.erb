@@ -13,10 +13,14 @@
         </label>
     </article>
     
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-description="Payment for game"
-        data-amount="<%=(@game.price*100).to_i%>"
-        data-locale="auto">
-    </script>
+    <div>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Payment for game"
+            data-amount="<%=(@game.price*100).to_i%>"
+            data-locale="auto">
+        </script>
+    
+        <a href="<%= game_path(@game.id) %>" class="btn btn-secondary my-2">Cancel</a>
+    </div>
 <% end %>
