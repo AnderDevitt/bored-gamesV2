@@ -44,9 +44,12 @@ g8.picture.attach(io: File.open(Rails.root.join('app/assets/images/descent.jpg')
 
 g8 = Game.create("name"=>"Star Wars Outer Rim", "genre"=>"science_fiction", "minimum_players"=>2, "maximum_players"=>4, "price"=>50.0, "description"=>"Fun expansion for Star Wars Rebellion.", "user_id"=>2, "condition"=>3)
 g8.picture.attach(io: File.open(Rails.root.join('app/assets/images/outer_rim.jpg')), filename: 'outer_rim.jpg')
+
 # Create sample purchases for DB
-Purchase.create("price"=>50.0, "deliver"=>false, "game_id"=>1, "user_id"=>4)
-Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>3, "user_id"=>2)
-Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>6, "user_id"=>2)
+# These purchases are missing receipts and are not ideal
+
+# Purchase.create("price"=>50.0, "deliver"=>false, "game_id"=>1, "user_id"=>4)
+# Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>3, "user_id"=>2)
+# Purchase.create("price"=>32.0, "deliver"=>false, "game_id"=>6, "user_id"=>2)
 
 puts 'Database is ready'

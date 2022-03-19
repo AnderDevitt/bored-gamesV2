@@ -24,8 +24,13 @@ class AddressesController < ApplicationController
 
     # POST /games
     def create
-        Address.new(street_number: address_params[:street_number], street_name: address_params[:street_name], suburb: address_params[:suburb], state: address_params[:state], postcode: address_params[:postcode], user: current_user)
-        redirect_to games_path
+        begin
+            Address.new(street_number: address_params[:street_number], street_name: address_params[:street_name], suburb: address_params[:suburb], state: address_params[:state], postcode: address_params[:postcode], user: current_user)
+            # No redirect here as address is created together with User creation in Devise
+        rescue StandardError => e
+            puts e.message
+            redirect_to games_path, notice: "Address wasn't created"
+        end  
     end
 
     # PATCH/PUT /addresses/1
@@ -42,7 +47,12 @@ class AddressesController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_address
-        @address = Address.find(params[:id])
+        begin
+            @address = Address.find(params[:id])
+        rescue StandardError => e
+            puts e.message
+            redirect_to games_path, alert: "Application is trying to access an address id #{params[:id]} doesn't exist in the database"
+        end
     end
 
     # Only allow a list of trusted parameters through.
@@ -50,6 +60,7 @@ class AddressesController < ApplicationController
         params.require(:address).permit(:street_number, :street_name, :suburb, :state, :postcode)
     end
 
+    # Only allow admin or address owner to do select actions
     def check_ownership
         if !(current_user.admin? or current_user.id == @address.user_id)
           redirect_to games_url, alert: "You have to be the authorised user or an admin to do this."

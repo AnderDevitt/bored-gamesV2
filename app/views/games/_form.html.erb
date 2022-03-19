@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= form.label :minimum_players %><br>
-    <%= form.number_field :minimum_players %>
+    <%= form.number_field :minimum_players, min: 1 %>
   </div>
 
   <div class="field">
     <%= form.label :maximum_players %><br>
-    <%= form.number_field :maximum_players %>
+    <%= form.number_field :maximum_players, min: 1 %>
   </div>
 
   <div class="field">

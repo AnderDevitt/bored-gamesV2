@@ -22,6 +22,10 @@
               <strong>Price:</strong>
               $<%= game.price %>
             </p>
+
+            <% if game.sold %>
+              <h2>SOLD</h2>
+            <% end %>
             <p><%= link_to 'Show', game, class: "btn btn-primary my-2" %></p>
           </div>
           

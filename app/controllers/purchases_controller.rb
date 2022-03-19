@@ -31,12 +31,13 @@ class PurchasesController < ApplicationController
         begin
         @purchase = Purchase.create(game: @game, user: current_user, price: @game.price, receipt_url: charge.receipt_url)
         # redirect_to game_path(@game.id)
-
+        @purchase.game.update(sold: true)
         rescue Stripe::CardError => e
             puts e.message
-            # redirect_to_games_path(@game.id), alert: "Payment failed" 
+            # flash[:error] = e.message
+            redirect_to game_path(@game.id), alert: "Payment failed" 
         end
-        # redirect_to game_path(@game.id)
+        @purchase.game.update(sold: true)
     end
 
     private

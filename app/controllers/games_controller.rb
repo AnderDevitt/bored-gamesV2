@@ -11,16 +11,15 @@ class GamesController < ApplicationController
   # GET /search
   def search
     if params[:search].blank?
-      redirect_to_games_path and return
+      redirect_to games_path and return
     else
-      @parameter = params[:search].downcase
-      @results = Game.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+        @parameter = params[:search].downcase
+        @results = Game.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
     end
   end
 
   # GET /games/1
   def show
-    # @game = Game.find(params[:id])
   end
 
   # GET /games/new
@@ -33,20 +32,23 @@ class GamesController < ApplicationController
   end
 
   # POST /games
+  # def create
+  #   begin
+  #     game = current_user.games.create(game_params)
+  #     redirect_to game_path(game), notice: "#{game.name} was created successfully"
+  #   rescue StandardError => e
+  #     puts e.message
+  #     redirect_to games_path, notice: "#{game.name} wasn't created"
+  #   end
+  # end
   def create
     begin
       game = current_user.games.create(game_params)
       redirect_to game_path(game), notice: "#{game.name} was created successfully"
     rescue StandardError => e
       puts e.message
-      redirect_to games_path, notice: "#{game.name} wasn't created"
+      redirect_to games_path, notice: "Game wasn't created"
     end
-    # respond_to do |format|
-      # if @game.save
-      #   format.html { redirect_to games_url(@game), notice: "Game was successfully created." }
-      # else
-      #   format.html { render :new, status: :unprocessable_entity }
-      # end
   end
 
   # PATCH/PUT /games/1
@@ -85,6 +87,7 @@ class GamesController < ApplicationController
       params.require(:game).permit(:name, :condition, :minimum_players, :maximum_players, :price, :description, :genre, :picture, :search)
     end
 
+    # Only allow admin or game seller to do select actions
     def check_ownership
       if !(current_user.admin? or current_user.id == @game.user_id)
         redirect_to games_url, alert: "You have to be the seller of a game or an admin to do this."
