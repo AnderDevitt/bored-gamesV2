@@ -6,6 +6,7 @@ u1 = User.create("email"=>"andy@test.com", "password" => "foobar", "password_con
 u2 = User.create("email"=>"saori@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"saori", "admin"=>false)
 u3 = User.create("email"=>"bob@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"bob", "admin"=>false)
 u4 = User.create("email"=>"jay@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"jay", "admin"=>false)
+u5 = User.create("email"=>"admin@test.com", "password" => "foobar", "password_confirmation" => "foobar", "username"=>"admin", "admin"=>true)
 
 # Create sample addresses for DB
 a1 = Address.create("street_number"=>1, "street_name"=>"West Street", "suburb"=>"Indooroopilly", "state"=>"QLD", "postcode"=>"4068", "user_id"=>2)
