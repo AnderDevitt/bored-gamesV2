@@ -25,6 +25,7 @@ class AddressesController < ApplicationController
     # POST /games
     def create
         begin
+            # Ensure correct params are passed
             Address.new(street_number: address_params[:street_number], street_name: address_params[:street_name], suburb: address_params[:suburb], state: address_params[:state], postcode: address_params[:postcode], user: current_user)
             # No redirect here as address is created together with User creation in Devise
         rescue StandardError => e
